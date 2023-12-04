@@ -58,3 +58,25 @@ def delete_user(request, id):
     #Se elimina la pelicula en base de datos
     Users.delete()
     return Response({'message':'Se elimino el usuario'},status=status.HTTP_200_OK)
+
+@api_view(['PUT'])
+def update_user(request, id):
+    """
+    Actualiza una pelicula.
+    """
+    try:
+        Users = Users.objects.get(pk=id)
+    except Users.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND,data='Recurso no encontrado')
+    
+    serializer = serializers.UsersSerializer(Users, data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        response = {'status':'Ok',
+                    'message':'Pelicula modificada exitosamente',
+                    'data':serializer.data}
+        return Response(data=response)
+    response = {'status':'Error',
+                'message':'No se pudo modificar la pelicula',
+                'errors':serializer.errors}
+    return Response(data=response, status=status.HTTP_400_BAD_REQUEST)

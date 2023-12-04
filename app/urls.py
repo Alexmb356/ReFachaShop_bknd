@@ -5,6 +5,7 @@ urlpatterns = [
     path('', views.index,name='inicio_app'),
     path('users/', views.get_users,name='get_users_app'),
     path('create_user/', views.create_user,name='create_user_app'),
-    path('delete_user/', views.delete_user,name='delete_user_app'),
+    path('delete_user/<int:id>/', views.delete_user,name='delete_user_app'),
+    path('update_user/<int:id>/', views.update_user,name='update_muser_app'),
 
 ]
