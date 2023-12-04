@@ -13,4 +13,4 @@ class Users(models.Model):
     domicilio = models.CharField(max_length=100)
     codigoPostal = models.CharField(max_length=100)
     contrasena = models.CharField(max_length=100)
-    #avatar = models.ImageField(upload_to='imagenes/',null=True,verbose_name='Portada')
+    avatar = models.ImageField(upload_to='imagenes/',null=True,verbose_name='Portada')
