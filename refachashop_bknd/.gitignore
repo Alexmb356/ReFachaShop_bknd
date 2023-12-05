@@ -288,5 +288,7 @@ $RECYCLE.BIN/
 
 # Atajos de Windows
 *.lnk
+# Ignorar la carpeta llamada 'imagenes'
+imagenes/
 
 # Fin de https://www.toptal.com/developers/gitignore/api/python,windows,django
